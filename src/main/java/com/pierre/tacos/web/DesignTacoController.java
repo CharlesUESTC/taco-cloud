@@ -24,8 +24,8 @@ import com.pierre.tacos.Ingredient.Type;
 @RequestMapping("/design")
 public class DesignTacoController {
 
-    @GetMapping
-    public String showDesignForm(Model model) {
+    @ModelAttribute
+    public void addIngredientsToModel(Model model) {
         List<Ingredient> ingredients = Arrays.asList(
             new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
             new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
@@ -44,9 +44,11 @@ public class DesignTacoController {
             model.addAttribute(type.toString().toLowerCase(),
                 filterByType(ingredients, type));
         }
+    }
 
+    @GetMapping
+    public String showDesignForm(Model model) {
         model.addAttribute("design", new Taco());
-
         return "design";
     }
 
