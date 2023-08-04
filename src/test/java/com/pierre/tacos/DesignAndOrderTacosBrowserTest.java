@@ -99,14 +99,14 @@ public class DesignAndOrderTacosBrowserTest {
         WebElement wrapGroup = browser.findElementByCssSelector("div.ingredient-group#wraps");
         List<WebElement> wraps = wrapGroup.findElements(By.tagName("div"));
         assertEquals(2, wraps.size());
-        assertIngredient(wrapGroup, 0, "FLTO", "Flour Tortilla");
-        assertIngredient(wrapGroup, 1, "COTO", "Corn Tortilla");
+        assertIngredient(wrapGroup, 0, "COTO", "Corn Tortilla");
+        assertIngredient(wrapGroup, 1, "FLTO", "Flour Tortilla");
 
         WebElement proteinGroup = browser.findElementByCssSelector("div.ingredient-group#proteins");
         List<WebElement> proteins = proteinGroup.findElements(By.tagName("div"));
         assertEquals(2, proteins.size());
-        assertIngredient(proteinGroup, 0, "GRBF", "Ground Beef");
-        assertIngredient(proteinGroup, 1, "CARN", "Carnitas");
+        assertIngredient(proteinGroup, 0, "CARN", "Carnitas");
+        assertIngredient(proteinGroup, 1, "GRBF", "Ground Beef");
 
         WebElement cheeseGroup = browser.findElementByCssSelector("div.ingredient-group#cheeses");
         List<WebElement> cheeses = cheeseGroup.findElements(By.tagName("div"));
@@ -117,8 +117,8 @@ public class DesignAndOrderTacosBrowserTest {
         WebElement veggieGroup = browser.findElementByCssSelector("div.ingredient-group#veggies");
         List<WebElement> veggies = veggieGroup.findElements(By.tagName("div"));
         assertEquals(2, veggies.size());
-        assertIngredient(veggieGroup, 0, "TMTO", "Diced Tomatoes");
-        assertIngredient(veggieGroup, 1, "LETC", "Lettuce");
+        assertIngredient(veggieGroup, 0, "LETC", "Lettuce");
+        assertIngredient(veggieGroup, 1, "TMTO", "Diced Tomatoes");
 
         WebElement sauceGroup = browser.findElementByCssSelector("div.ingredient-group#sauces");
         List<WebElement> sauces = sauceGroup.findElements(By.tagName("div"));
@@ -129,11 +129,11 @@ public class DesignAndOrderTacosBrowserTest {
 
     private void fillInAndSubmitOrderForm() {
         assertTrue(browser.getCurrentUrl().startsWith(orderDetailsPageUrl()));
-        fillField("input#name", "Ima Hungry");
-        fillField("input#street", "1234 Culinary Blvd");
-        fillField("input#city", "Foodsville");
-        fillField("input#state", "CO");
-        fillField("input#zip", "81019");
+        fillField("input#deliveryName", "Ima Hungry");
+        fillField("input#deliveryStreet", "1234 Culinary Blvd.");
+        fillField("input#deliveryCity", "Foodsville");
+        fillField("input#deliveryState", "CO");
+        fillField("input#deliveryZip", "81019");
         fillField("input#ccNumber", "4111111111111111");
         fillField("input#ccExpiration", "10/19");
         fillField("input#ccCVV", "123");
@@ -170,11 +170,11 @@ public class DesignAndOrderTacosBrowserTest {
 
     private void submitInvalidOrderForm() {
         assertTrue(browser.getCurrentUrl().startsWith(orderDetailsPageUrl()));
-        fillField("input#name", "I");
-        fillField("input#street", "1");
-        fillField("input#city", "F");
-        fillField("input#state", "C");
-        fillField("input#zip", "8");
+        fillField("input#deliveryName", "I");
+        fillField("input#deliveryStreet", "1");
+        fillField("input#deliveryCity", "F");
+        fillField("input#deliveryState", "C");
+        fillField("input#deliveryZip", "8");
         fillField("input#ccNumber", "1234432112344322");
         fillField("input#ccExpiration", "14/91");
         fillField("input#ccCVV", "1234");
