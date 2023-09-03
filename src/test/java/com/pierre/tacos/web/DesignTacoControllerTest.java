@@ -2,6 +2,7 @@ package com.pierre.tacos.web;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -62,9 +63,9 @@ public class DesignTacoControllerTest {
         when(ingredientRepository.findAll())
             .thenReturn(ingredients);
 
-        when(ingredientRepository.findOne("FLTO")).thenReturn(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
-        when(ingredientRepository.findOne("GRBF")).thenReturn(new Ingredient("GRBF", "Ground Beef", Type.PROTEIN));
-        when(ingredientRepository.findOne("CHED")).thenReturn(new Ingredient("CHED", "Cheddar", Type.CHEESE));
+        when(ingredientRepository.findById("FLTO")).thenReturn(Optional.of(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP)));
+        when(ingredientRepository.findById("GRBF")).thenReturn(Optional.of(new Ingredient("GRBF", "Ground Beef", Type.PROTEIN)));
+        when(ingredientRepository.findById("CHED")).thenReturn(Optional.of(new Ingredient("CHED", "Cheddar", Type.CHEESE)));
 
         design = new Taco();
         design.setName("Test Taco");
